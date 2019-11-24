@@ -1,0 +1,64 @@
+app:
+  name: "OpenDAX"
+  domain: "app.local"
+  subdomain: "www"
+render_protect: false 
+ssl:
+  enabled: false    # Make sure to enable during deployment
+  email: "support@example.com"
+license:
+  url: "https://www.openware.com/api/v2/tenko"
+  key: "PASTE-KEY-HERE"
+images:
+  peatio: rubykube/peatio:2.3.43
+  barong: rubykube/barong:2.3.36
+  frontend: quay.io/openware/baseapp-lite:2.3.20 # Check on quay.io/openware for latest tags
+  tower: quay.io/openware/tower-lite:2.3.130
+  postmaster: quay.io/openware/postmaster:2.3.4
+vendor:
+  frontend: git@github.com:openware/baseapp.git
+vault:
+  mode: development
+  token: changeme
+storage:
+  provider: "Google"
+  bucketName: "opendax-barong-docs-bucket"
+  accessKey: "**********"
+  secretKey: "**********"
+twilio:
+  phone_number: "+15005550000"
+  account_sid: "changeme"
+  auth_token: "changeme"
+recaptcha:
+  type: "none"
+  siteKey: "changeme"
+  secretKey: "changeme"
+smtp:
+  host: smtp.sendgrid.net
+  port: 2525
+  user: apikey
+  password: changeme
+  sender_email: noreply@postmaster.com
+  sender_name: Postmaster
+wallets:
+  - kind: deposit
+    address: "changeme"
+    max_balance: 0.0
+    secret: changeme
+  - kind: hot
+    address: "changeme"
+    max_balance: 100.0
+    secret: changeme
+  - kind: warm
+    address: "changeme"
+    max_balance: 1000.0
+    secret: changeme
+terraform:
+  credentials: "~/safe/opendax.json"
+  project: "example-opendax"
+  region: "europe-west4"
+  zone: "europe-west4-a"
+  instance_name: "opendax-cloud"
+  machine_type: "n1-standard-4"
+  image: "debian-cloud/debian-9"
+

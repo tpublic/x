@@ -1,0 +1,13 @@
+<% @config['wallets'].each do |wallet| -%>
+- name:             Ethereum <%= wallet['kind'].capitalize %> Wallet
+  blockchain_key:   eth-kovan
+  currency_id:      eth
+  address:          '<%= wallet['address'] %>'
+  kind:             <%= wallet['kind'] %>
+  max_balance:      <%= wallet['max_balance'] %>
+  status:           active
+  gateway:          parity
+  settings:
+    uri:            http://parity:8545
+    secret:         '<%= wallet['secret'] %>'
+<% end %>
